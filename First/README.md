@@ -1,6 +1,6 @@
 # PiAPS-labs
 # Лабораторная работа номер 1
-https://i.ytimg.com/an_webp/BHNt1fcg8iw/mqdefault_6s.webp?du=3000&sqp=CMSlsYIG&rs=AOn4CLAVLXlETD-wZu63masE10cJWPYe-g
+![](https://i.ytimg.com/an_webp/BHNt1fcg8iw/mqdefault_6s.webp?du=3000&sqp=CMSlsYIG&rs=AOn4CLAVLXlETD-wZu63masE10cJWPYe-g)
 # Контрольные вопросы
 1) Архитектура - базовая организация системы, воплощенная в её компонентах и отношениях между ними.
 2)  Архитектура клиент/сервер 
