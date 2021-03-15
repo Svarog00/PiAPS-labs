@@ -11,7 +11,6 @@ namespace SocketTcpServer
 {
     class ServerClass
     {
-        Thread Messages;
         static int currentClients = 0;
         static List<Client> Handlers = new List<Client>();
         int port = 8005; // порт для приема входящих запросов
@@ -19,7 +18,7 @@ namespace SocketTcpServer
         public ServerClass()
         {
             // получаем адреса для запуска сокета
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("192.168.43.0"), port);
 
             // создаем сокет
             Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
