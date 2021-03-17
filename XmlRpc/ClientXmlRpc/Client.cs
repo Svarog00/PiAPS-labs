@@ -32,11 +32,12 @@ namespace ClientXmlRpc
 					arrayList.Add(Int32.Parse(Console.ReadLine()));
 				}
 			}
-			matrix = OneDArrayToMatrix(arrayList); //Save the matrix
+			matrix = OneDArrayToMatrix(arrayList, 0); //Save the matrix
 			//Create xmlRpc request
 			XmlRpcRequest client = new XmlRpcRequest();
 			client.MethodName = "FlowServer.Method";
 			client.Params.Add(arrayList);
+			client.Params.Add(min);
 			//Call method from XmlServer
 			try
 			{
@@ -70,8 +71,8 @@ namespace ClientXmlRpc
 				Console.Write("\n");
 			}
 
-			Console.WriteLine($"Минимальный элемент: {min}");
-			matrix = OneDArrayToMatrix(arrayList);
+			Console.WriteLine($"Минимальный элемент: {arrayList[arrayList.Count-1]}");
+			matrix = OneDArrayToMatrix(arrayList, 1);
 			Console.WriteLine("Результирующая матрица: ");
 			for (int i = matrix.GetLowerBound(0); i <= matrix.GetUpperBound(0); i++)
 			{
@@ -83,18 +84,18 @@ namespace ClientXmlRpc
 			}
 		}
 
-		int[,] OneDArrayToMatrix(ArrayList arrayList)
+		int[,] OneDArrayToMatrix(ArrayList arrayList, int kostil)
 		{
 			int[] array = new int[arrayList.Count];
 			arrayList.CopyTo(array);
 
-			int[,] matrix = new int[(int)Math.Sqrt(array.Length), (int)Math.Sqrt(array.Length)];
+			int[,] matrix = new int[(int)Math.Sqrt(array.Length-kostil), (int)Math.Sqrt(array.Length - kostil)];
 
-			for (int i = 0; i < (int)Math.Sqrt(array.Length); i++)
+			for (int i = 0; i < (int)Math.Sqrt(array.Length - kostil); i++)
 			{
-				for (int j = 0; j < (int)Math.Sqrt(array.Length); j++)
+				for (int j = 0; j < (int)Math.Sqrt(array.Length - kostil); j++)
 				{
-					matrix[i, j] = array[i * (int)Math.Sqrt(array.Length) + j];
+					matrix[i, j] = array[i * (int)Math.Sqrt(array.Length - kostil) + j];
 				}
 			}
 

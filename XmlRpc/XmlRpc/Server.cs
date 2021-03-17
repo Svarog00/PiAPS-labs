@@ -8,17 +8,19 @@ namespace XmlRpc
     {
         int port = 5005;
         (int, int) indexes = (0, 0);
+		string serverName;
 
         public Server()
         {
+			serverName = "FlowServer";
             XmlRpcServer xmlRpcServer = new XmlRpcServer(port);
-            xmlRpcServer.Add("FlowServer", this);
+            xmlRpcServer.Add(serverName, this);
             xmlRpcServer.Start();
 			Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Server started");
+            Console.WriteLine($"Server {serverName} started");
         }
 
-        public ArrayList Method(ArrayList array)
+        public ArrayList Method(ArrayList array, int min)
         {
 			int[,] matrix = OneDArrayToMatrix(array);
 			//Выводим матрицу
@@ -111,8 +113,9 @@ namespace XmlRpc
 				}
 				Console.Write("\n");
 			}
-
-			return MatrixToOneDArray(matrix);
+			array = MatrixToOneDArray(matrix);
+			array.Add(min);
+			return array;
 		}
 
 		int[,] OneDArrayToMatrix(ArrayList arrayList)
