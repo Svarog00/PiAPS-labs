@@ -14,10 +14,11 @@ namespace XmlRpc
             XmlRpcServer xmlRpcServer = new XmlRpcServer(port);
             xmlRpcServer.Add("FlowServer", this);
             xmlRpcServer.Start();
+			Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Server started");
         }
 
-        public ArrayList Method(ArrayList array, int min)
+        public ArrayList Method(ArrayList array)
         {
 			int[,] matrix = OneDArrayToMatrix(array);
 			//Выводим матрицу

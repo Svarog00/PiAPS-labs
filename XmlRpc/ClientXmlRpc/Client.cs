@@ -29,19 +29,19 @@ namespace ClientXmlRpc
 				Console.WriteLine($"Line {i + 1}: ");
 				for (int j = 0; j < size; j++)
 				{
-					//matrix[i+j] = Int32.Parse(Console.ReadLine());
 					arrayList.Add(Int32.Parse(Console.ReadLine()));
 				}
 			}
+			matrix = OneDArrayToMatrix(arrayList); //Save the matrix
 			//Create xmlRpc request
 			XmlRpcRequest client = new XmlRpcRequest();
 			client.MethodName = "FlowServer.Method";
-			client.Params.Add(arrayList); 
-			client.Params.Add(min);
+			client.Params.Add(arrayList);
 			//Call method from XmlServer
 			try
 			{
-				client.Invoke(URL);
+				arrayList = (ArrayList)client.Invoke(URL);
+				Console.Clear();
 				ShowMatix();
 			}
 			catch (XmlRpcException serverException)
@@ -58,8 +58,9 @@ namespace ClientXmlRpc
 
 		void ShowMatix()
         {
-			matrix = OneDArrayToMatrix(arrayList);
-
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.WriteLine("Изначальная матрица: ");
+			Console.Write("\n");
 			for (int i = matrix.GetLowerBound(0); i <= matrix.GetUpperBound(0); i++)
 			{
 				for (int j = matrix.GetLowerBound(0); j <= matrix.GetUpperBound(1); j++)
@@ -70,7 +71,8 @@ namespace ClientXmlRpc
 			}
 
 			Console.WriteLine($"Минимальный элемент: {min}");
-
+			matrix = OneDArrayToMatrix(arrayList);
+			Console.WriteLine("Результирующая матрица: ");
 			for (int i = matrix.GetLowerBound(0); i <= matrix.GetUpperBound(0); i++)
 			{
 				for (int j = matrix.GetLowerBound(0); j <= matrix.GetUpperBound(1); j++)
