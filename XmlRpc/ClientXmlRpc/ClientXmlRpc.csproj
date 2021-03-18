@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="ClientData.cs" />
     <Compile Include="notNwc\Logger.cs" />
     <Compile Include="notNwc\SimpleHttpRequest.cs" />
     <Compile Include="notNwc\XmlRpcBoxcarRequest.cs" />

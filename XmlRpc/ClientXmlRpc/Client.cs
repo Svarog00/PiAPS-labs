@@ -32,7 +32,7 @@ namespace ClientXmlRpc
 					arrayList.Add(Int32.Parse(Console.ReadLine()));
 				}
 			}
-			matrix = OneDArrayToMatrix(arrayList, 0); //Save the matrix
+			matrix = OneDArrayToMatrix(arrayList); //Save the matrix
 			//Create xmlRpc request
 			XmlRpcRequest client = new XmlRpcRequest();
 			client.MethodName = "FlowServer.Method";
@@ -84,18 +84,18 @@ namespace ClientXmlRpc
 			}
 		}
 
-		int[,] OneDArrayToMatrix(ArrayList arrayList, int kostil)
+		int[,] OneDArrayToMatrix(ArrayList arrayList, int flag = 0)
 		{
 			int[] array = new int[arrayList.Count];
 			arrayList.CopyTo(array);
 
-			int[,] matrix = new int[(int)Math.Sqrt(array.Length-kostil), (int)Math.Sqrt(array.Length - kostil)];
+			int[,] matrix = new int[(int)Math.Sqrt(array.Length - flag), (int)Math.Sqrt(array.Length - flag)];
 
-			for (int i = 0; i < (int)Math.Sqrt(array.Length - kostil); i++)
+			for (int i = 0; i < (int)Math.Sqrt(array.Length - flag); i++)
 			{
-				for (int j = 0; j < (int)Math.Sqrt(array.Length - kostil); j++)
+				for (int j = 0; j < (int)Math.Sqrt(array.Length - flag); j++)
 				{
-					matrix[i, j] = array[i * (int)Math.Sqrt(array.Length - kostil) + j];
+					matrix[i, j] = array[i * (int)Math.Sqrt(array.Length - flag) + j];
 				}
 			}
 
