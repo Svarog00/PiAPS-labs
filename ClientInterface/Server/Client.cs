@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace SocketTcpServer
 {
+    //Класс клиента на сервере для хранения данных о клиенте и получения от него сообщений для последующей отправки остальным.
     class Client
     {
         Socket clientSocket;
@@ -32,6 +33,7 @@ namespace SocketTcpServer
             get { return nickname; }
         }
 
+        //получение сообщения от клиента и последующая его отправка другим клиентам
         void GetMessage()
         {
             StringBuilder builder = new StringBuilder();

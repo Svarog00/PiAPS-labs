@@ -19,7 +19,7 @@ namespace XmlRpc
 			Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Server {serverName} started");
         }
-
+		//Метод, который вызывается клиентом для обработки матрицы
         public ArrayList Method(ArrayList array, int min)
         {
 			int[,] matrix = OneDArrayToMatrix(array);
@@ -117,7 +117,7 @@ namespace XmlRpc
 			array.Add(min);
 			return array;
 		}
-
+		//Преобразование входной матрицы в одномерный массив
 		int[,] OneDArrayToMatrix(ArrayList arrayList)
         {
 			int[] array = new int[arrayList.Count];
@@ -135,7 +135,7 @@ namespace XmlRpc
 
 			return matrix;
         }
-
+		//Функция преобрзования матрицы в одномерный массив для отправки клиенту
 		ArrayList MatrixToOneDArray(int[,] matrix)
         {
 			ArrayList arrayList = new ArrayList();

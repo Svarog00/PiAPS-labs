@@ -10,10 +10,13 @@ namespace ClientInterface
 {
     class Client
     {
-        Socket server;
-        IPEndPoint ipPoint;
-        bool isConnected = false;
+        private Socket server;
+        private IPEndPoint ipPoint;
+        private bool isConnected = false;
 
+        //Адрес и порт сервера, к которому происходит подключение при создании экземпляра класса
+        //РичТекстБокс - текстовое поле, в которое происходит ввод сообщений
+        //ТекстБокс с ником, который отправляется на сервер для хранения клиента
         public Client(string address, int port, RichTextBox richTextBox, TextBox nicknameTextBox)
         {
             try
@@ -36,6 +39,9 @@ namespace ClientInterface
                 richTextBox.AppendText(e.Message);
             }
         }
+        //Асинхронная функция для получения сообщение от сервера
+        //Сокет для сервера, откуда получаются сообщения
+        //РичТекстБокс - поле куда выводятся сообщения
         private async void GetMessagesAsync(Socket server, RichTextBox richTextBox)
         {
             await Task.Run(() => GetMessages(server, richTextBox));
@@ -69,7 +75,7 @@ namespace ClientInterface
                 isConnected = false;
             }
         }
-
+        //Отправка сообщения серверу 
         public void SendMessage(TextBox textBox)
         {
             if(isConnected)

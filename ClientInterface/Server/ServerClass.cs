@@ -56,12 +56,14 @@ namespace SocketTcpServer
             }
         }
 
+        //Отключение клиента от сервера
         static public void DisconnectClient(Client client)
         {
             Handlers.Remove(client);
             currentClients--;
         }
-
+        
+        //Отправка всем клиентам сообщение, которое пришло от какого-то из клиентов
         static public void Distribution(byte[] data)
         {
             for (int i = 0; i < currentClients; i++)
