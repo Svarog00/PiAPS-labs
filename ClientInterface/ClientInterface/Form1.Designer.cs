@@ -56,6 +56,7 @@ namespace ClientInterface
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(161, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "127.0.0.1";
             // 
             // textBox2
             // 

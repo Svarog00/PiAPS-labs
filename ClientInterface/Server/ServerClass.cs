@@ -66,7 +66,7 @@ namespace SocketTcpServer
         //Отправка всем клиентам сообщение, которое пришло от какого-то из клиентов
         static public void Distribution(byte[] data)
         {
-            for (int i = 0; i < currentClients; i++)
+            for (int i = 0; i < currentClients && Handlers[i].CSocket.Connected; i++)
             {
                 Handlers[i].CSocket.Send(data);
             }
