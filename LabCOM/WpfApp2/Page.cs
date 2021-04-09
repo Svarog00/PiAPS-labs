@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Word = Microsoft.Office.Interop.Word;
+using System.Windows;
 
 namespace WpfApp2
 {
@@ -35,91 +32,97 @@ namespace WpfApp2
             //Студент
             //Преподаватель
             //Год
+            try
+            {
+                Word.Document objdoc = objword.Documents.Add();
+                Word.Paragraph objpara;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = "МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ" +
+                    "   РОССИЙСКОЙ ФЕДЕРАЦИИ";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            Word.Document objdoc = objword.Documents.Add();
-            Word.Paragraph objpara;
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = "МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ" +
-                "   РОССИЙСКОЙ ФЕДЕРАЦИИ";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = "ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ" +
+                    " «ОРЛОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = "ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ" +
-                " «ОРЛОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = " ИМЕНИ И.С. ТУРГЕНЕВА»";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = " ИМЕНИ И.С. ТУРГЕНЕВА»";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"\nКафедра {cafedra}";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"\nКафедра {cafedra}";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = "\n\n\nОТЧЕТ";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Range.Bold = 2;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = "\n\n\nОТЧЕТ";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Range.Bold = 2;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"По лабораторной работе №{labNum}";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"По лабораторной работе №{labNum}";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"на тему: «{theme}»";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"на тему: «{theme}»";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"по дисциплине: «{discipline}»";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"по дисциплине: «{discipline}»";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"\n\n\n\nВыполнил: {student}";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"\n\n\n\nВыполнил: {student}";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = "Институт приборостроения, автоматизации и информационных технологий" +
+                    " Направление: 09.03.04 «Программная инженерия»";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = "Институт приборостроения, автоматизации и информационных технологий" +
-                " Направление: 09.03.04 «Программная инженерия»";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = "Группа: 92-ПГ";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = "Группа: 92-ПГ";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"Проверил: {teacher}";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"Проверил: {teacher}";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"\nОтметка о зачете:                                    Дата: «____» __________ {year} г.";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
+                objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"\nОтметка о зачете:                                    Дата: «____» __________ {year} г.";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-            objpara.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                objpara = objdoc.Paragraphs.Add();
+                objpara.Range.Text = $"\n\n\n\n\nОрел, {year}";
+                objpara = objdoc.Paragraphs.Add();
+                SetParagraph(objpara);
 
-            objpara = objdoc.Paragraphs.Add();
-            objpara.Range.Text = $"\n\n\n\n\nОрел, {year}";
-            objpara = objdoc.Paragraphs.Add();
-            SetParagraph(objpara);
-
-            objdoc.SaveAs("D:\\MSDOC.docx"); //Сохранить файл
-            objdoc.Close();
-            objword.Quit();
+                objdoc.SaveAs("D:\\MSDOC.docx"); //Сохранить файл
+                objdoc.Close();
+                objword.Quit();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }
