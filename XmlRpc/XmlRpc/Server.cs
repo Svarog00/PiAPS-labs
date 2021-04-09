@@ -90,11 +90,16 @@ namespace XmlRpc
 				}
 			}
 			//Возведение в квадрат элементов, которые находятся ниже матрицы
-			for (int i = matrix.GetLowerBound(0); i <= matrix.GetUpperBound(0); i++, indexes.Item1++, indexes.Item2++)
+			for (int i = matrix.GetLowerBound(0); i <= matrix.GetUpperBound(0); i++)
 			{
 				for (int j = matrix.GetLowerBound(1); j <= matrix.GetUpperBound(1); j++)
 				{
-					if (i >= indexes.Item1 && j >= indexes.Item2)
+					if(i == indexes.Item1 && j == indexes.Item2)
+					{
+						indexes.Item1++; indexes.Item2++;
+						break;
+					}
+					if ((i > indexes.Item1 || i < indexes.Item1) && j >= indexes.Item2)
 					{
 						continue;
 					}
