@@ -49,15 +49,23 @@ namespace ClientInterface
 
         private void GetMessages(Socket server, RichTextBox richTextBox)
         {
-            while (isConnected)
+            while (server.Connected)
             {
                 // получаем ответ
                 byte[] data = new byte[256]; // буфер для ответа
                 StringBuilder builder = new StringBuilder();
                 do
                 {
-                    int bytes = server.Receive(data, data.Length, 0);
-                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes)); //получение закодированного сообщения
+                    try
+                    {
+                        int bytes = server.Receive(data, data.Length, 0);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes)); //получение закодированного сообщения
+                    }
+                    catch(Exception e)
+                    {
+                        richTextBox.Invoke(new MethodInvoker(() => { richTextBox.AppendText($"\n{e.Message}"); }));
+                        break;
+                    }
                 }
                 while (server.Available > 0);
                 richTextBox.Invoke(new MethodInvoker(() => { richTextBox.AppendText($"\n{builder}"); }));
@@ -66,11 +74,12 @@ namespace ClientInterface
 
         public void Disconnect(RichTextBox richText)
         {
-            if(isConnected)
+            if(server.Connected)
             {
                 string message = "/disconnect";
                 byte[] data = Encoding.Unicode.GetBytes(message);
                 server.Send(data); //отправка на сервер
+                server.Disconnect(true);
                 richText.AppendText($"Goodbye Y_Y");
                 isConnected = false;
             }
@@ -78,7 +87,7 @@ namespace ClientInterface
         //Отправка сообщения серверу 
         public void SendMessage(TextBox textBox)
         {
-            if(isConnected)
+            if(server.Connected)
             {
                 string message = textBox.Text;
                 byte[] data = Encoding.Unicode.GetBytes(message);

@@ -18,7 +18,7 @@ namespace SocketTcpServer
         public ServerClass()
         {
             // получаем адреса для запуска сокета
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("192.168.43.0"), port);
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
 
             // создаем сокет
             Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -66,7 +66,7 @@ namespace SocketTcpServer
         //Отправка всем клиентам сообщение, которое пришло от какого-то из клиентов
         static public void Distribution(byte[] data)
         {
-            for (int i = 0; i < currentClients; i++)
+            for (int i = 0; i < currentClients && Handlers[i].CSocket.Connected; i++)
             {
                 Handlers[i].CSocket.Send(data);
             }

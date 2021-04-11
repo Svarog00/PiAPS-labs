@@ -38,12 +38,21 @@ namespace SocketTcpServer
         {
             StringBuilder builder = new StringBuilder();
             byte[] data = new byte[256]; // буфер для получаемых данных
-            while(true)
+            while(clientSocket.Connected)
             {
                 do
                 {
-                    int bytes = clientSocket.Receive(data);
-                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    try
+                    {
+                        int bytes = clientSocket.Receive(data);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        builder.Append("/disconnect");
+                        break;
+                    }
                 }
                 while (clientSocket.Available > 0);
 
