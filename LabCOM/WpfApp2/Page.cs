@@ -1,6 +1,6 @@
 ﻿using System;
-using Word = Microsoft.Office.Interop.Word;
 using System.Windows;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WpfApp2
 {

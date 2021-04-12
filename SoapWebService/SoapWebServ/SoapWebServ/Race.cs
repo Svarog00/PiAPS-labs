@@ -16,9 +16,8 @@ namespace SoapWebServ
         public bool isGone;
 
         public Race()
-        {
-            
-        }
+        {}
+
         public Race(int id, string source, string destinition, DateTime time, int maxSeats , bool status)
         {
             Id = id;
@@ -37,16 +36,16 @@ namespace SoapWebServ
 
         public bool ReserveSeat(int num)
         {
-                if(!seats[num - 1].IsReserved)
-                {
-                    --SeatsAmount;
-                    seats[num - 1].ReserveSeat();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+            if(!seats[num - 1].IsReserved)
+            {
+                  --SeatsAmount;
+                  seats[num - 1].ReserveSeat();
+                  return true;
+            }
+            else
+            {
+                 return false;
+            }
         }
     }
 }

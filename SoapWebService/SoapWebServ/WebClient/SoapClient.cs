@@ -13,7 +13,6 @@ namespace WebClient
         public string ShowRaces(string source, string destinition)
         {
             return client.ShowRaces(source, destinition);
-            
         }
 
         public string CheckTickets(string source, string destinition, DateTime time)
