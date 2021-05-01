@@ -1,0 +1,50 @@
+﻿<Window x:Class="DialogueRedactor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DialogueRedactor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button 
+            Name="SerializeButton" 
+            Content="Serialize" 
+            HorizontalAlignment="Center" 
+            Margin="0,350,0,0" 
+            VerticalAlignment="Top" 
+            Click="Button_Click"
+            Height="49" 
+            Width="131"/>
+
+        <Grid x:Name="DialogueFields" Margin="0,0,0,110">
+
+
+            <ComboBox Name="NodeComboBox"  HorizontalAlignment="Left" Margin="59,32,0,0" VerticalAlignment="Top" Width="460" SelectionChanged="NodeComboBox_SelectionChanged"/>
+            <Label Content="Node text" HorizontalAlignment="Left" Margin="59,54,0,0" VerticalAlignment="Top"/>
+            <TextBox Name="NodeNPCText" HorizontalAlignment="Left" Margin="59,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
+
+            <ComboBox Name="AnswersComboBox" HorizontalAlignment="Left" Margin="59,116,0,0" VerticalAlignment="Top" Width="460"/>
+            <TextBox Name="AnswerText" HorizontalAlignment="Left" Margin="59,164,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
+            <Label Content="Answer Text" HorizontalAlignment="Left" Margin="59,138,0,0" VerticalAlignment="Top"/>
+
+            <TextBox Name="NextNodeTextBox" HorizontalAlignment="Left" Margin="72,208,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" PreviewTextInput="NextNodeTextBox_PreviewTextInput"/>
+            <Label Content="Next node num" HorizontalAlignment="Left" Margin="56,182,0,0" VerticalAlignment="Top"/>
+           
+            <Button Name="NewNodeButton" Content="New Node" HorizontalAlignment="Left" Margin="539,28,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="NewNodeButton_Click"/>
+            <Button Name="NewAnswerButton" Content="New Answer" HorizontalAlignment="Left" Margin="539,112,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="NewAnswerButton_Click"/>
+
+            <Button x:Name="ChangeNodeButton" Content="Edit Node" HorizontalAlignment="Left" Margin="539,74,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="ChangeNodeButton_Click"/>
+            <Button x:Name="ChangeAnswerButton" Content="Edit Answer" HorizontalAlignment="Left" Margin="539,158,0,0" VerticalAlignment="Top" Height="30" Width="76" Click="ChangeAnswerButton_Click"/>
+            
+            <Button Content="Delete Node" HorizontalAlignment="Left" Margin="620,28,0,0" VerticalAlignment="Top" Height="30" Width="79" Click="DeleteNodeButton_Click_1"/>
+            <Button Content="Delete Answer" HorizontalAlignment="Left" Margin="620,112,0,0" VerticalAlignment="Top" Height="30" Width="79" Click="DeleteAnswerButton_Click_1"/>
+            
+            <CheckBox Name="EndOfDialogue" Content="End Dialogue" HorizontalAlignment="Left" Margin="177,209,0,0" VerticalAlignment="Top"/>
+
+
+        </Grid>
+
+    </Grid>
+
+</Window>
