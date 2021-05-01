@@ -24,7 +24,7 @@
             <Label Content="Node text" HorizontalAlignment="Left" Margin="59,54,0,0" VerticalAlignment="Top"/>
             <TextBox Name="NodeNPCText" HorizontalAlignment="Left" Margin="59,80,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
 
-            <ComboBox Name="AnswersComboBox" HorizontalAlignment="Left" Margin="59,116,0,0" VerticalAlignment="Top" Width="460"/>
+            <ComboBox Name="AnswersComboBox" HorizontalAlignment="Left" Margin="59,116,0,0" VerticalAlignment="Top" Width="460" SelectionChanged="AnswersComboBox_SelectionChanged"/>
             <TextBox Name="AnswerText" HorizontalAlignment="Left" Margin="59,164,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="460"/>
             <Label Content="Answer Text" HorizontalAlignment="Left" Margin="59,138,0,0" VerticalAlignment="Top"/>
 

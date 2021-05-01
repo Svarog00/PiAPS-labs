@@ -6,10 +6,12 @@ namespace DialogueRedactor.Model
     class Fasade
     {
         Dialogue dialogue;
+        ISerializator serializator;
 
         public Fasade()
         {
             dialogue = new Dialogue();
+            serializator = new XmlSerializerImp();
         }
 
         public void AddNode(string text)
@@ -44,12 +46,29 @@ namespace DialogueRedactor.Model
 
         public void EditAnswer(int nodeNum, int ansNum, string text, string endDialogue, int nextNode)
         {
-            
+            dialogue.nodes[nodeNum].answers[ansNum].text = text;
+            dialogue.nodes[nodeNum].answers[ansNum].endDialog = endDialogue;
+            dialogue.nodes[nodeNum].answers[ansNum].nextNode = nextNode;
         }
 
         public void DeleteAnswer(int nodeNum, int num)
         {
             dialogue.nodes[nodeNum].answers.RemoveAt(num);
+        }
+
+        public string GetAnswerText(int nodeNum, int num)
+        {
+            return dialogue.nodes[nodeNum].answers[num].text;
+        }
+
+        public int GetAnswerNextNode(int nodeNum, int num)
+        {
+            return dialogue.nodes[nodeNum].answers[num].nextNode;
+        }
+
+        public bool GetAnswerEndFlag(int nodeNum, int num)
+        {
+            return bool.Parse(dialogue.nodes[nodeNum].answers[num].endDialog);
         }
 
         public List<Answer> GetAnswersList(int nodeNum)
@@ -64,8 +83,6 @@ namespace DialogueRedactor.Model
 
         public void Serialize(string path)
         {
-            ISerializator serializator = new XmlSerializerImp();
-
             serializator.Serialize(dialogue, path);
         }
     }
